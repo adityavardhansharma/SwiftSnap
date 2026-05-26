@@ -18,8 +18,6 @@ struct OnboardingView: View {
 
     var body: some View {
         ZStack {
-            OnboardingGlass()
-
             orbLayer
                 .allowsHitTesting(false)
 
@@ -29,11 +27,9 @@ struct OnboardingView: View {
                     Button(action: finishOnboarding) {
                         Image(systemName: "xmark")
                             .font(.system(size: 11, weight: .semibold))
-                            .foregroundStyle(.tertiary)
-                            .frame(width: 24, height: 24)
-                            .background(Circle().fill(.white.opacity(0.06)))
+                            .frame(width: 26, height: 26)
                     }
-                    .buttonStyle(.plain)
+                    .buttonStyle(.glass)
                 }
                 .padding(.top, 14)
                 .padding(.trailing, 16)
@@ -64,21 +60,7 @@ struct OnboardingView: View {
             }
         }
         .frame(width: 640, height: 500)
-        .onboardingLiquidGlass(cornerRadius: 24)
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .strokeBorder(
-                    LinearGradient(
-                        colors: [.white.opacity(0.35), .white.opacity(0.08), .white.opacity(0.03)],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    ),
-                    lineWidth: 0.5
-                )
-        }
-        .shadow(color: .black.opacity(0.5), radius: 40, y: 14)
-        .shadow(color: .black.opacity(0.15), radius: 2, y: 1)
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
         .onAppear {
             permissionService.checkAllPermissions()
 
@@ -96,8 +78,7 @@ struct OnboardingView: View {
         .onDisappear {
             stopPermissionPolling()
         }
-        .onChange(of: currentPage) { newPage in
-            // Persist progress so app restart resumes here
+        .onChange(of: currentPage) { _, newPage in
             UserDefaults.standard.set(newPage, forKey: "onboardingPage")
 
             if newPage == 1 || newPage == 2 {
@@ -344,15 +325,11 @@ struct OnboardingView: View {
                         systemImage: "folder.badge.plus"
                     )
                     .font(.system(size: 13, weight: .medium))
-                    .padding(.horizontal, 22)
-                    .padding(.vertical, 9)
-                    .background(
-                        Capsule()
-                            .fill(.blue.opacity(0.12))
-                            .overlay(Capsule().strokeBorder(.blue.opacity(0.2), lineWidth: 0.5))
-                    )
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 4)
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(.glass)
+                .tint(.blue)
 
                 Button(action: { settingsStore.clipboardOnly.toggle() }) {
                     HStack(spacing: 8) {
@@ -467,23 +444,18 @@ struct OnboardingView: View {
                     Button("Back") {
                         goBack()
                     }
-                    .buttonStyle(.plain)
-                    .foregroundStyle(.secondary)
+                    .buttonStyle(.glass)
                     .font(.system(size: 13, weight: .medium))
                 }
 
                 Button(action: goForward) {
                     Text(currentPage == totalPages - 1 ? "Start Capturing" : "Continue")
                         .font(.system(size: 13, weight: .semibold))
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, 22)
-                        .padding(.vertical, 8)
-                        .background(
-                            Capsule().fill(.blue)
-                                .shadow(color: .blue.opacity(0.35), radius: 8, y: 3)
-                        )
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 4)
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(.glassProminent)
+                .tint(.blue)
             }
         }
     }
@@ -547,55 +519,6 @@ struct OnboardingView: View {
     }
 }
 
-// MARK: - Glass Background
-
-struct OnboardingGlass: NSViewRepresentable {
-    func makeNSView(context: Context) -> NSVisualEffectView {
-        let view = NSVisualEffectView()
-        view.material = .hudWindow
-        view.blendingMode = .behindWindow
-        view.state = .active
-        view.wantsLayer = true
-        view.layer?.cornerRadius = 16
-
-        let borderLayer = CALayer()
-        borderLayer.borderColor = NSColor.white.withAlphaComponent(0.12).cgColor
-        borderLayer.borderWidth = 0.5
-        borderLayer.cornerRadius = 16
-        borderLayer.masksToBounds = true
-        borderLayer.autoresizingMask = [.layerWidthSizable, .layerHeightSizable]
-        view.layer?.addSublayer(borderLayer)
-
-        let topHighlight = CAGradientLayer()
-        topHighlight.colors = [
-            NSColor.white.withAlphaComponent(0.18).cgColor,
-            NSColor.white.withAlphaComponent(0.0).cgColor
-        ]
-        topHighlight.locations = [0, 1]
-        topHighlight.startPoint = CGPoint(x: 0.5, y: 0)
-        topHighlight.endPoint = CGPoint(x: 0.5, y: 1)
-        topHighlight.frame = CGRect(x: 0, y: 0, width: 800, height: 2)
-        topHighlight.cornerRadius = 16
-        topHighlight.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        topHighlight.autoresizingMask = [.layerWidthSizable]
-        view.layer?.addSublayer(topHighlight)
-
-        return view
-    }
-
-    func updateNSView(_ nsView: NSVisualEffectView, context: Context) {}
-}
-
-private extension View {
-    @ViewBuilder
-    func onboardingLiquidGlass(cornerRadius: CGFloat) -> some View {
-        if #available(macOS 26.0, *) {
-            self.glassEffect(.regular.interactive(), in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
-        } else {
-            self
-        }
-    }
-}
 
 // MARK: - Permission Page Content
 
@@ -650,23 +573,18 @@ struct PermissionPageContent: View {
                 Button(action: action) {
                     Label(actionLabel, systemImage: "lock.open")
                         .font(.system(size: 13, weight: .medium))
-                        .padding(.horizontal, 22)
-                        .padding(.vertical, 9)
-                        .background(
-                            Capsule()
-                                .fill(color.opacity(0.12))
-                                .overlay(Capsule().strokeBorder(color.opacity(0.2), lineWidth: 0.5))
-                        )
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 4)
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(.glassProminent)
+                .tint(color)
                 .padding(.bottom, 10)
 
                 Button(action: refreshAction) {
                     Label("Check again", systemImage: "arrow.clockwise")
                         .font(.system(size: 12))
-                        .foregroundStyle(.secondary)
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(.glass)
                 .padding(.bottom, 10)
 
                 Text(hint)
@@ -695,11 +613,7 @@ struct OnboardingFeatureRow: View {
                 .font(.system(size: 13, weight: .medium))
                 .foregroundStyle(color)
                 .frame(width: 30, height: 30)
-                .background(
-                    Circle()
-                        .fill(color.opacity(0.1))
-                        .overlay(Circle().strokeBorder(color.opacity(0.15), lineWidth: 0.5))
-                )
+                .glassEffect(.regular.tint(color.opacity(0.15)), in: Circle())
 
             Text(text)
                 .font(.system(size: 14))
@@ -738,23 +652,7 @@ struct OnboardingKeyCap: View {
         Text(symbol)
             .font(.system(size: size.fontSize, weight: .medium, design: .rounded))
             .frame(width: size.dimension, height: size.dimension)
-            .background {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 8, style: .continuous)
-                        .fill(.ultraThinMaterial)
-                    RoundedRectangle(cornerRadius: 8, style: .continuous)
-                        .strokeBorder(
-                            LinearGradient(
-                                colors: [.white.opacity(0.25), .white.opacity(0.06)],
-                                startPoint: .top,
-                                endPoint: .bottom
-                            ),
-                            lineWidth: 0.5
-                        )
-                }
-            }
-            .shadow(color: .black.opacity(0.2), radius: 3, y: 2)
-            .shadow(color: .black.opacity(0.08), radius: 1, y: 1)
+            .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
     }
 }
 
@@ -766,16 +664,11 @@ struct OnboardingWorkflowStep: View {
 
     var body: some View {
         VStack(spacing: 8) {
-            ZStack {
-                Circle()
-                    .fill(.blue.opacity(0.08))
-                    .overlay(Circle().strokeBorder(.blue.opacity(0.15), lineWidth: 0.5))
-                    .frame(width: 42, height: 42)
-
-                Image(systemName: icon)
-                    .font(.system(size: 16, weight: .medium))
-                    .foregroundStyle(.blue)
-            }
+            Image(systemName: icon)
+                .font(.system(size: 16, weight: .medium))
+                .foregroundStyle(.blue)
+                .frame(width: 42, height: 42)
+                .glassEffect(.regular.tint(.blue.opacity(0.1)), in: Circle())
 
             Text(label)
                 .font(.system(size: 11, weight: .medium))

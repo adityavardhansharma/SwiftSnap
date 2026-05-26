@@ -13,6 +13,6 @@ struct NotificationToastView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
-        .glassBackground(cornerRadius: 22)
+        .glassEffect(.regular, in: Capsule())
     }
 }

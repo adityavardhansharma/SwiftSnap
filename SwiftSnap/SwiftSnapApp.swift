@@ -11,9 +11,9 @@ struct SwiftSnapApp: App {
     }
 }
 
-class FloatingPanel: NSWindow {
+class FloatingPanel: NSPanel {
     override var canBecomeKey: Bool { true }
-    override var canBecomeMain: Bool { true }
+    override var canBecomeMain: Bool { false }
 }
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
@@ -73,10 +73,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func showOnboarding(settingsStore: SettingsStore, permissionService: PermissionService) {
         let window = FloatingPanel(
             contentRect: NSRect(x: 0, y: 0, width: 640, height: 500),
-            styleMask: [.borderless, .fullSizeContentView],
+            styleMask: [.titled, .fullSizeContentView, .nonactivatingPanel],
             backing: .buffered,
             defer: false
         )
+        window.titlebarAppearsTransparent = true
+        window.titleVisibility = .hidden
         window.isOpaque = false
         window.backgroundColor = .clear
         window.hasShadow = false
@@ -84,6 +86,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         window.center()
         window.level = .floating
         window.isReleasedWhenClosed = false
+        window.isFloatingPanel = true
 
         let onboardingView = OnboardingView(
             settingsStore: settingsStore,

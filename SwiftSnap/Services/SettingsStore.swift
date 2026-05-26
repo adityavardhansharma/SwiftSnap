@@ -98,19 +98,17 @@ final class SettingsStore: ObservableObject {
     }
 
     private func updateLoginItem() {
-        if #available(macOS 13.0, *) {
-            do {
-                if launchAtStartup {
-                    if SMAppService.mainApp.status != .enabled {
-                        try SMAppService.mainApp.register()
-                    }
-                } else if SMAppService.mainApp.status == .enabled {
-                    try SMAppService.mainApp.unregister()
+        do {
+            if launchAtStartup {
+                if SMAppService.mainApp.status != .enabled {
+                    try SMAppService.mainApp.register()
                 }
-            } catch {
-                UserDefaults.standard.set(false, forKey: Keys.launchAtStartup)
-                launchAtStartup = false
+            } else if SMAppService.mainApp.status == .enabled {
+                try SMAppService.mainApp.unregister()
             }
+        } catch {
+            UserDefaults.standard.set(false, forKey: Keys.launchAtStartup)
+            launchAtStartup = false
         }
     }
 }

@@ -26,7 +26,7 @@ struct SettingsView: View {
         }
         .frame(width: 480, height: 380)
         .padding(12)
-        .appleLiquidGlass(cornerRadius: 24)
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 }
 
@@ -67,7 +67,7 @@ struct GeneralSettingsTab: View {
         }
         .formStyle(.grouped)
         .padding()
-        .scrollContentBackgroundIfAvailable()
+        .scrollContentBackground(.hidden)
     }
 
     private func chooseSaveFolder() {
@@ -120,7 +120,7 @@ struct CaptureSettingsTab: View {
         }
         .formStyle(.grouped)
         .padding()
-        .scrollContentBackgroundIfAvailable()
+        .scrollContentBackground(.hidden)
     }
 }
 
@@ -152,38 +152,6 @@ struct ShortcutSettingsTab: View {
         }
         .formStyle(.grouped)
         .padding()
-        .scrollContentBackgroundIfAvailable()
-    }
-}
-
-private extension View {
-    @ViewBuilder
-    func appleLiquidGlass(cornerRadius: CGFloat) -> some View {
-        if #available(macOS 26.0, *) {
-            self.glassEffect(.regular.interactive(), in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
-        } else {
-            self.background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
-                .overlay {
-                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                        .strokeBorder(
-                            LinearGradient(
-                                colors: [.white.opacity(0.42), .white.opacity(0.12), .white.opacity(0.08)],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 0.8
-                        )
-                }
-                .shadow(color: .black.opacity(0.22), radius: 24, y: 10)
-        }
-    }
-
-    @ViewBuilder
-    func scrollContentBackgroundIfAvailable() -> some View {
-        if #available(macOS 13.0, *) {
-            self.scrollContentBackground(.hidden)
-        } else {
-            self
-        }
+        .scrollContentBackground(.hidden)
     }
 }
