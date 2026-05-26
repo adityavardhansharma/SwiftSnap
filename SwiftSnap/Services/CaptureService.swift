@@ -209,7 +209,7 @@ final class CaptureService: ObservableObject {
         let previewSize = NSSize(width: 320, height: 280)
         let frame = clampedPreviewFrame(size: previewSize, on: screen)
 
-        let panel = NSPanel(
+        let panel = FloatingPanel(
             contentRect: frame,
             styleMask: [.borderless, .nonactivatingPanel],
             backing: .buffered,
@@ -217,8 +217,8 @@ final class CaptureService: ObservableObject {
         )
         panel.isOpaque = false
         panel.backgroundColor = .clear
-        panel.level = .floating
-        panel.collectionBehavior = [.moveToActiveSpace, .fullScreenAuxiliary, .ignoresCycle]
+        panel.level = .statusBar
+        panel.collectionBehavior = [.canJoinAllSpaces, .stationary, .fullScreenAuxiliary]
         panel.hasShadow = false
         panel.isReleasedWhenClosed = false
         panel.isMovable = false
@@ -335,33 +335,37 @@ private struct OfficialCaptureToolbarView: View {
     @ObservedObject var captureService: CaptureService
 
     var body: some View {
-        HStack(spacing: 4) {
-            toolbarModeButton(
-                title: "Area",
-                systemImage: "selection.pin.in.out",
-                isSelected: captureService.selectedMode == .area
-            ) {
-                captureService.selectMode(.area)
-            }
+        GlassEffectContainer(spacing: 6) {
+            HStack(spacing: 4) {
+                toolbarModeButton(
+                    title: "Area",
+                    systemImage: "selection.pin.in.out",
+                    isSelected: captureService.selectedMode == .area
+                ) {
+                    captureService.selectMode(.area)
+                }
 
-            toolbarModeButton(
-                title: "Window",
-                systemImage: "macwindow",
-                isSelected: captureService.selectedMode == .window
-            ) {
-                captureService.selectMode(.window)
-            }
+                toolbarModeButton(
+                    title: "Window",
+                    systemImage: "macwindow",
+                    isSelected: captureService.selectedMode == .window
+                ) {
+                    captureService.selectMode(.window)
+                }
 
-            toolbarModeButton(
-                title: "Screen",
-                systemImage: "display",
-                isSelected: captureService.selectedMode == .fullScreen
-            ) {
-                captureService.selectMode(.fullScreen)
+                toolbarModeButton(
+                    title: "Screen",
+                    systemImage: "display",
+                    isSelected: captureService.selectedMode == .fullScreen
+                ) {
+                    captureService.selectMode(.fullScreen)
+                }
             }
+            .padding(6)
+            .glassEffect(.regular, in: .capsule)
+            .shadow(color: .black.opacity(0.32), radius: 20, x: 0, y: 10)
+            .shadow(color: .black.opacity(0.14), radius: 3, x: 0, y: 1)
         }
-        .padding(10)
-        .glassEffect(.regular, in: .capsule)
     }
 
     private func toolbarModeButton(title: String, systemImage: String, isSelected: Bool, action: @escaping () -> Void) -> some View {
@@ -369,15 +373,16 @@ private struct OfficialCaptureToolbarView: View {
             Label(title, systemImage: systemImage)
                 .font(.system(size: 14, weight: .medium))
                 .symbolRenderingMode(.hierarchical)
-                .foregroundStyle(isSelected ? .white : .primary)
-                .frame(width: 120, height: 40)
-                .background {
+                .foregroundStyle(Color.primary)
+                .frame(width: 118, height: 40)
+                .contentShape(Capsule())
+                .overlay {
                     if isSelected {
                         Capsule()
-                            .fill(.tint)
+                            .strokeBorder(.white.opacity(0.65), lineWidth: 1.2)
+                            .blendMode(.plusLighter)
                     }
                 }
-                .contentShape(Capsule())
         }
         .buttonStyle(.plain)
     }
@@ -396,21 +401,25 @@ private struct CapturePreviewGlassView: View {
     var body: some View {
         GlassEffectContainer(spacing: 6) {
             VStack(spacing: 10) {
-                HStack(spacing: 8) {
-                    roundGlassButton(icon: "eye", tip: "Open in Preview") {
+                HStack(spacing: 4) {
+                    actionButton(icon: "eye", tip: "Open in Preview") {
                         cancelAutoDismiss(); openInPreview()
                     }
-                    roundGlassButton(icon: "square.and.arrow.down", tip: "Save As") {
+                    actionButton(icon: "square.and.arrow.down", tip: "Save As") {
                         cancelAutoDismiss(); captureService.saveAs()
                     }
-                    roundGlassButton(icon: "pencil", tip: "Rename") {
+                    actionButton(icon: "pencil", tip: "Rename") {
                         cancelAutoDismiss(); rename()
                     }
-                    roundGlassButton(icon: "trash", tip: "Delete") {
+                    actionButton(icon: "trash", tip: "Delete") {
                         captureService.deleteFile(); onDismiss()
                     }
-                    roundGlassButton(icon: "xmark", tip: "Close", action: onDismiss)
+                    actionButton(icon: "xmark", tip: "Close", action: onDismiss)
                 }
+                .padding(6)
+                .glassEffect(.regular, in: .capsule)
+                .shadow(color: .black.opacity(0.32), radius: 20, x: 0, y: 10)
+                .shadow(color: .black.opacity(0.14), radius: 3, x: 0, y: 1)
 
                 Button {
                     cancelAutoDismiss(); openInPreview()
@@ -420,21 +429,25 @@ private struct CapturePreviewGlassView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 290, height: 180)
+                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                    .stroke(.white.opacity(0.18), lineWidth: 1)
+                            )
+                            .shadow(color: .black.opacity(0.25), radius: 10, y: 4)
 
                         Text(result.displayName)
                             .font(.system(size: 11, weight: .medium))
                             .lineLimit(1)
                             .truncationMode(.middle)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 5)
                             .frame(maxWidth: 200, alignment: .leading)
                             .glassEffect(.regular, in: .capsule)
-                            .padding(8)
+                            .padding(10)
                     }
                 }
                 .buttonStyle(.plain)
-                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-                .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
                 .help("Open in Preview")
             }
         }
@@ -455,15 +468,16 @@ private struct CapturePreviewGlassView: View {
         }
     }
 
-    private func roundGlassButton(icon: String, tip: String, action: @escaping () -> Void) -> some View {
+    private func actionButton(icon: String, tip: String, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Image(systemName: icon)
                 .font(.system(size: 15, weight: .medium))
-                .frame(width: 38, height: 38)
+                .symbolRenderingMode(.hierarchical)
+                .foregroundStyle(Color.primary)
+                .frame(width: 40, height: 40)
                 .contentShape(Circle())
         }
         .buttonStyle(.plain)
-        .glassEffect(.regular.interactive(), in: .circle)
         .help(tip)
     }
 
