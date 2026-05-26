@@ -1,0 +1,533 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A100000001 /* SwiftSnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000001; };
+		A100000002 /* CaptureMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000002; };
+		A100000003 /* CaptureResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000003; };
+		A100000004 /* ImageFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000004; };
+		A100000005 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000005; };
+		A100000006 /* ClipboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000006; };
+		A100000007 /* SaveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000007; };
+		A100000008 /* PermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000008; };
+		A100000009 /* ShortcutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000009; };
+		A100000010 /* RecentCapturesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000010; };
+		A100000011 /* CaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000011; };
+		A100000012 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000012; };
+		A100000013 /* CaptureToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000013; };
+		A100000014 /* OverlaySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000014; };
+		A100000015 /* WindowHighlightOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000015; };
+		A100000016 /* FullScreenCaptureOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000016; };
+		A100000017 /* PreviewThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000017; };
+		A100000018 /* NotificationToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000018; };
+		A100000019 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000019; };
+		A100000020 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000020; };
+		A100000021 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B100000021; };
+		A100000030 /* SettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000030; };
+		A100000031 /* CaptureServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000031; };
+		A100000032 /* ClipboardServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000032; };
+		A100000033 /* SaveServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000033; };
+		A100000034 /* RecentCapturesManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000034; };
+		A100000035 /* FilenameGenerationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000035; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C100000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D100000001;
+			proxyType = 1;
+			remoteGlobalIDString = E100000001;
+			remoteInfo = SwiftSnap;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B100000001 /* SwiftSnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSnapApp.swift; sourceTree = "<group>"; };
+		B100000002 /* CaptureMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureMode.swift; sourceTree = "<group>"; };
+		B100000003 /* CaptureResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureResult.swift; sourceTree = "<group>"; };
+		B100000004 /* ImageFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFormat.swift; sourceTree = "<group>"; };
+		B100000005 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		B100000006 /* ClipboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardService.swift; sourceTree = "<group>"; };
+		B100000007 /* SaveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveService.swift; sourceTree = "<group>"; };
+		B100000008 /* PermissionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionService.swift; sourceTree = "<group>"; };
+		B100000009 /* ShortcutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutService.swift; sourceTree = "<group>"; };
+		B100000010 /* RecentCapturesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCapturesManager.swift; sourceTree = "<group>"; };
+		B100000011 /* CaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureService.swift; sourceTree = "<group>"; };
+		B100000012 /* MenuBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
+		B100000013 /* CaptureToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureToolbarView.swift; sourceTree = "<group>"; };
+		B100000014 /* OverlaySelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaySelectionView.swift; sourceTree = "<group>"; };
+		B100000015 /* WindowHighlightOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowHighlightOverlay.swift; sourceTree = "<group>"; };
+		B100000016 /* FullScreenCaptureOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenCaptureOverlay.swift; sourceTree = "<group>"; };
+		B100000017 /* PreviewThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewThumbnailView.swift; sourceTree = "<group>"; };
+		B100000018 /* NotificationToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToastView.swift; sourceTree = "<group>"; };
+		B100000019 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		B100000020 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B100000021 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B100000022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B100000023 /* SwiftSnap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftSnap.entitlements; sourceTree = "<group>"; };
+		B100000030 /* SettingsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStoreTests.swift; sourceTree = "<group>"; };
+		B100000031 /* CaptureServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureServiceTests.swift; sourceTree = "<group>"; };
+		B100000032 /* ClipboardServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardServiceTests.swift; sourceTree = "<group>"; };
+		B100000033 /* SaveServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveServiceTests.swift; sourceTree = "<group>"; };
+		B100000034 /* RecentCapturesManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCapturesManagerTests.swift; sourceTree = "<group>"; };
+		B100000035 /* FilenameGenerationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilenameGenerationTests.swift; sourceTree = "<group>"; };
+		F100000001 /* SwiftSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F100000002 /* SwiftSnapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftSnapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		G100000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		G100000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		H100000001 = {
+			isa = PBXGroup;
+			children = (
+				H100000002 /* SwiftSnap */,
+				H100000010 /* SwiftSnapTests */,
+				H100000020 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		H100000002 /* SwiftSnap */ = {
+			isa = PBXGroup;
+			children = (
+				B100000001 /* SwiftSnapApp.swift */,
+				H100000003 /* Models */,
+				H100000004 /* Services */,
+				H100000005 /* Views */,
+				B100000021 /* Assets.xcassets */,
+				B100000022 /* Info.plist */,
+				B100000023 /* SwiftSnap.entitlements */,
+			);
+			path = SwiftSnap;
+			sourceTree = "<group>";
+		};
+		H100000003 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B100000002 /* CaptureMode.swift */,
+				B100000003 /* CaptureResult.swift */,
+				B100000004 /* ImageFormat.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		H100000004 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B100000005 /* SettingsStore.swift */,
+				B100000006 /* ClipboardService.swift */,
+				B100000007 /* SaveService.swift */,
+				B100000008 /* PermissionService.swift */,
+				B100000009 /* ShortcutService.swift */,
+				B100000010 /* RecentCapturesManager.swift */,
+				B100000011 /* CaptureService.swift */,
+				B100000012 /* MenuBarController.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		H100000005 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				H100000006 /* Capture */,
+				H100000007 /* Onboarding */,
+				H100000008 /* Settings */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		H100000006 /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				B100000013 /* CaptureToolbarView.swift */,
+				B100000014 /* OverlaySelectionView.swift */,
+				B100000015 /* WindowHighlightOverlay.swift */,
+				B100000016 /* FullScreenCaptureOverlay.swift */,
+				B100000017 /* PreviewThumbnailView.swift */,
+				B100000018 /* NotificationToastView.swift */,
+			);
+			path = Capture;
+			sourceTree = "<group>";
+		};
+		H100000007 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				B100000019 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		H100000008 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B100000020 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		H100000010 /* SwiftSnapTests */ = {
+			isa = PBXGroup;
+			children = (
+				B100000030 /* SettingsStoreTests.swift */,
+				B100000031 /* CaptureServiceTests.swift */,
+				B100000032 /* ClipboardServiceTests.swift */,
+				B100000033 /* SaveServiceTests.swift */,
+				B100000034 /* RecentCapturesManagerTests.swift */,
+				B100000035 /* FilenameGenerationTests.swift */,
+			);
+			path = SwiftSnapTests;
+			sourceTree = "<group>";
+		};
+		H100000020 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F100000001 /* SwiftSnap.app */,
+				F100000002 /* SwiftSnapTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E100000001 /* SwiftSnap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = I100000001;
+			buildPhases = (
+				J100000001 /* Sources */,
+				G100000001 /* Frameworks */,
+				K100000001 /* Resources */,
+				N100000001 /* Reset Privacy Permissions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftSnap;
+			productName = SwiftSnap;
+			productReference = F100000001;
+			productType = "com.apple.product-type.application";
+		};
+		E100000002 /* SwiftSnapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = I100000002;
+			buildPhases = (
+				J100000002 /* Sources */,
+				G100000002 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				L100000001 /* PBXTargetDependency */,
+			);
+			name = SwiftSnapTests;
+			productName = SwiftSnapTests;
+			productReference = F100000002;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D100000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					E100000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					E100000002 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = E100000001;
+					};
+				};
+			};
+			buildConfigurationList = I100000003;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = H100000001;
+			productRefGroup = H100000020;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E100000001 /* SwiftSnap */,
+				E100000002 /* SwiftSnapTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		K100000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A100000021 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		N100000001 /* Reset Privacy Permissions */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Reset Privacy Permissions";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${TARGET_NAME}\" = \"SwiftSnap\" ]; then\n  /usr/bin/tccutil reset ScreenCapture \"${PRODUCT_BUNDLE_IDENTIFIER}\" || true\n  /usr/bin/tccutil reset Accessibility \"${PRODUCT_BUNDLE_IDENTIFIER}\" || true\n  /usr/bin/tccutil reset AppleEvents \"${PRODUCT_BUNDLE_IDENTIFIER}\" || true\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		J100000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A100000001 /* SwiftSnapApp.swift in Sources */,
+				A100000002 /* CaptureMode.swift in Sources */,
+				A100000003 /* CaptureResult.swift in Sources */,
+				A100000004 /* ImageFormat.swift in Sources */,
+				A100000005 /* SettingsStore.swift in Sources */,
+				A100000006 /* ClipboardService.swift in Sources */,
+				A100000007 /* SaveService.swift in Sources */,
+				A100000008 /* PermissionService.swift in Sources */,
+				A100000009 /* ShortcutService.swift in Sources */,
+				A100000010 /* RecentCapturesManager.swift in Sources */,
+				A100000011 /* CaptureService.swift in Sources */,
+				A100000012 /* MenuBarController.swift in Sources */,
+				A100000013 /* CaptureToolbarView.swift in Sources */,
+				A100000014 /* OverlaySelectionView.swift in Sources */,
+				A100000015 /* WindowHighlightOverlay.swift in Sources */,
+				A100000016 /* FullScreenCaptureOverlay.swift in Sources */,
+				A100000017 /* PreviewThumbnailView.swift in Sources */,
+				A100000018 /* NotificationToastView.swift in Sources */,
+				A100000019 /* OnboardingView.swift in Sources */,
+				A100000020 /* SettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		J100000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A100000030 /* SettingsStoreTests.swift in Sources */,
+				A100000031 /* CaptureServiceTests.swift in Sources */,
+				A100000032 /* ClipboardServiceTests.swift in Sources */,
+				A100000033 /* SaveServiceTests.swift in Sources */,
+				A100000034 /* RecentCapturesManagerTests.swift in Sources */,
+				A100000035 /* FilenameGenerationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		L100000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E100000001;
+			targetProxy = C100000001;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		M100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		M100000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		M100000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwiftSnap/SwiftSnap.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SwiftSnap/Info.plist;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright 2024 SwiftSnap. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swiftsnap.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		M100000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwiftSnap/SwiftSnap.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SwiftSnap/Info.plist;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright 2024 SwiftSnap. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swiftsnap.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		M100000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swiftsnap.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftSnap.app/Contents/MacOS/SwiftSnap";
+			};
+			name = Debug;
+		};
+		M100000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swiftsnap.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftSnap.app/Contents/MacOS/SwiftSnap";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		I100000001 /* Build configuration list for PBXNativeTarget "SwiftSnap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				M100000003 /* Debug */,
+				M100000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		I100000002 /* Build configuration list for PBXNativeTarget "SwiftSnapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				M100000005 /* Debug */,
+				M100000006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		I100000003 /* Build configuration list for PBXProject "SwiftSnap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				M100000001 /* Debug */,
+				M100000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = D100000001 /* Project object */;
+}
