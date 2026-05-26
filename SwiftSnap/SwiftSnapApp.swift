@@ -70,6 +70,22 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         false
     }
 
+    /// Called when the user "opens" the already-running app from Spotlight,
+    /// the Finder, or Launchpad. We treat that as a request to start a
+    /// capture — but only after onboarding is complete, otherwise we just
+    /// bring the onboarding window forward.
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if let onboarding = onboardingWindow, onboarding.isVisible {
+            onboarding.makeKeyAndOrderFront(nil)
+            NSApp.activate(ignoringOtherApps: true)
+            return true
+        }
+        if settingsStore?.hasCompletedOnboarding == true {
+            captureService?.startCapture()
+        }
+        return true
+    }
+
     private func showOnboarding(settingsStore: SettingsStore, permissionService: PermissionService) {
         let window = FloatingPanel(
             contentRect: NSRect(x: 0, y: 0, width: 640, height: 500),
